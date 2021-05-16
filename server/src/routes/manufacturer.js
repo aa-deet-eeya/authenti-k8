@@ -73,4 +73,19 @@ router.post('/register', (req, res) => {
     })
 });
 
+router.post('/addProduct', auth, (req, res) => {
+  let data = Object.assign({}, req.body);
+  manufacturerController.addProduct(data)
+    .then(data=> {
+      res.send(data);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(404).send({
+        success: false,
+        error: 'Server Error'
+      })
+    })
+})
+
 module.exports = router;

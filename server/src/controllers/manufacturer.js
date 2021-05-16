@@ -1,4 +1,5 @@
 const manufacturer = require('../models/manufacturer_repo')
+const product = require('../models/products_repo')
 const util = require('../helpers/utils');
 
 module.exports = {
@@ -27,35 +28,20 @@ module.exports = {
           };
         } else {
           return {
-            // success: true,
             id: result_data.id,
           };
         }
-          //  .catch(error => {
-          //   console.log(error);
-          //   return error
-          // });
       }
     }
     catch (err) {
       console.log(err);
       throw err;
     }
-      // .then(data => {
-      //   if (data.success == false || data.success) {
-      //     return data;
-      //   }
-      //   return util.getToken(data);
-      // .catch(error => {
-      //   console.log(error);
-      //   return error
-      // });
   },
 
   register: async (user_data) => {
     try {
       let data = await manufacturer.checkUserExists(user_data.email)
-        // .then(data => {
       if (data && data.id) {
         if (data.email === user_data.email) {
           return {
@@ -66,25 +52,47 @@ module.exports = {
         }
       } else {
         await manufacturer.add(user_data)
-        // .then(data => {
         return {
           id: user_data.id,
           name: user_data.name,
           email: user_data.email
         }
-        // })
-        // .catch(err => {
-        //   throw err;
-        // });
       }
 
     } catch(err) {
       console.log(err);
       throw err;
     }
-      // })
-      // .catch(error => {
-      //   throw error;
-      // })
   },
+
+  addProduct: async (product) => {
+    try {
+      // let data = 
+      await product.add(product)
+      // if()
+    } catch(error) {
+      console.log(err);
+      throw err;
+    }
+  },
+
+  getProduct: async (id, txn_id) => {
+    try {
+      let data = await product.get(id, txn_id)
+      if(data && data.id) {
+        return {
+          success: true,
+          data: data
+        }
+      } 
+      
+      return {
+        success: false,
+        message: "No such product Found"
+      }
+    } catch(error) {
+      console.log(err);
+      throw err;
+    }
+  }
 }
