@@ -1,7 +1,7 @@
 const app = require('./app');
 require('dotenv').config({ path: '.env' });
   
-const port = process.env.APP_PORT || 3000;
+// const port = process.env.APP_PORT || 3000;
 
 const setUpExpress = () => {
   const port = process.env.APP_PORT || 3000;
