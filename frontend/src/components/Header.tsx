@@ -76,7 +76,7 @@ const MenuLinks: React.FC<any> = ({ isOpen }) => {
         <Links to="/">Home</Links>
         <Links to="/CreateRetailer">Retailer Register</Links>
         <Links to="/CreateCode">Generate QR code</Links>
-        <MenuItem to="/pricing">About</MenuItem>
+        <Links to="/About">About</Links>
         <ColorModeSwitcher justifyContent="center" />
         <Links to="/CreateRetailer">
           <Button

@@ -9,7 +9,7 @@ import HomePage from "./HomePage";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CreateRetailer from "./CreateRetailer";
 import CreateCode from "./CreateCode";
-
+import About from "./About"
 
 function App() {
   return (
@@ -30,6 +30,9 @@ function App() {
                   </Route>
                   <Route path="/CreateCode">
                     <CreateCode />
+                  </Route>
+                  <Route path="/About">
+                    <About />
                   </Route>
                 </Switch>
               </div>
